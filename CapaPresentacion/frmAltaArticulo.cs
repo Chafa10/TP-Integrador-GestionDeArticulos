@@ -60,7 +60,7 @@ namespace CapaPresentacion
             }
             catch (Exception)
             {
-
+                
                 MessageBox.Show("Fallo al cargar el programa... contacte a su programador","Error critico",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
@@ -95,13 +95,13 @@ namespace CapaPresentacion
                 if(articulo.Id != 0)
                 {
                     negocio.modificarArticulo(articulo);
-                    MessageBox.Show("Modificado exitosamente");
+                    MessageBox.Show("Modificado exitosamente","Modificar Articulo",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
                 else
                 {
 
                     negocio.agregarArticulo(articulo);
-                    MessageBox.Show("Agregado exitosamente");
+                    MessageBox.Show("Agregado exitosamente","Agrear Articulo",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
 
                 Close();
@@ -109,7 +109,7 @@ namespace CapaPresentacion
             }
             catch (Exception)
             {
-
+                
                 MessageBox.Show("Error al intentar agregar o modificar un articulo...","Error critico",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
@@ -124,7 +124,7 @@ namespace CapaPresentacion
             {
                 erpAltaArticulo.SetError(txtCodigo, "Solo ingresar letras y numeros");
                 return true;
-            }else if(txtCodigo.Text == "")
+            }else if(txtCodigo.Text.Trim() == "")
             {
                 erpAltaArticulo.SetError(txtCodigo, "Este campo es oblgatorio, por favor ingrese el codigo");
                 return true;
@@ -135,7 +135,7 @@ namespace CapaPresentacion
                 erpAltaArticulo.SetError(txtNombre, "Solo ingresar letras y numeros");
                 return true;
             }
-            else if (txtNombre.Text == "")
+            else if (txtNombre.Text.Trim() == "")
             {
                 erpAltaArticulo.SetError(txtNombre, "Este campo es oblgatorio, por favor ingrese el nombre");
                 return true;
@@ -146,23 +146,28 @@ namespace CapaPresentacion
                 erpAltaArticulo.SetError(txtDescripcion, "Solo ingresar letras y numeros");
                 return true;
             }
-            else if (txtDescripcion.Text == "")
+            else if (txtDescripcion.Text.Trim() == "")
             {
                 erpAltaArticulo.SetError(txtDescripcion, "Este campo es oblgatorio, por favor ingrese el descripcion");
                 return true;
             }
             else erpAltaArticulo.Clear();
-            if(!(Validacion.soloNumeros(txtPrecio.Text)))
-            {
-                erpAltaArticulo.SetError(txtPrecio, "Solo ingresar numeros");
-                return true;
-            }
-            else if (txtPrecio.Text == "")
+            
+            if (txtPrecio.Text == "")
             {
                 erpAltaArticulo.SetError(txtPrecio, "Este campo es oblgatorio, por favor ingrese el precio");
                 return true;
             }
             
+            else if (Convert.ToDecimal(txtPrecio.Text) == 0)
+            {
+                erpAltaArticulo.SetError(txtPrecio, "El Precio no puede ser 0");
+                return true;
+
+            }
+           
+            
+
             else erpAltaArticulo.Clear();
 
 
@@ -208,6 +213,11 @@ namespace CapaPresentacion
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validacion.UnaComa(e, txtPrecio.Text);
         }
 
         private void pnlSuperior_MouseMove(object sender, MouseEventArgs e)

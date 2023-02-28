@@ -292,7 +292,20 @@ namespace CapaPresentacion
             }
         }
 
-        
+        private void btnResetLista_Click(object sender, EventArgs e)
+        {
+            cargar();
+        }
+
+        private void picInicioLista_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnInicioLista_Click(object sender, EventArgs e)
+        {
+            dgvArticulos.Rows[0].Selected = true;
+        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

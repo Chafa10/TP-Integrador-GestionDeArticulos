@@ -47,9 +47,9 @@
             this.txtImagen = new System.Windows.Forms.TextBox();
             this.pcbImagenUrl = new System.Windows.Forms.PictureBox();
             this.pnlSuperior = new System.Windows.Forms.Panel();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.lblAltaArticulo = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
             this.lblAdvertencia = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -198,10 +198,11 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(141, 315);
-            this.txtPrecio.MaxLength = 20;
+            this.txtPrecio.MaxLength = 12;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 20);
             this.txtPrecio.TabIndex = 6;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblImagen
             // 
@@ -245,21 +246,15 @@
             this.pnlSuperior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlSuperior_MouseMove);
             this.pnlSuperior.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlSuperior_MouseUp);
             // 
-            // btnMinimizar
+            // lblAltaArticulo
             // 
-            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(76)))), ((int)(((byte)(92)))));
-            this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnMinimizar.FlatAppearance.BorderSize = 0;
-            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimizar.Location = new System.Drawing.Point(442, 0);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(22, 41);
-            this.btnMinimizar.TabIndex = 18;
-            this.btnMinimizar.Text = "-";
-            this.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.UseVisualStyleBackColor = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.lblAltaArticulo.AutoSize = true;
+            this.lblAltaArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAltaArticulo.Location = new System.Drawing.Point(28, 10);
+            this.lblAltaArticulo.Name = "lblAltaArticulo";
+            this.lblAltaArticulo.Size = new System.Drawing.Size(146, 24);
+            this.lblAltaArticulo.TabIndex = 20;
+            this.lblAltaArticulo.Text = "Agregar Arituclo";
             // 
             // btnSalir
             // 
@@ -276,15 +271,21 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // lblAltaArticulo
+            // btnMinimizar
             // 
-            this.lblAltaArticulo.AutoSize = true;
-            this.lblAltaArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltaArticulo.Location = new System.Drawing.Point(28, 10);
-            this.lblAltaArticulo.Name = "lblAltaArticulo";
-            this.lblAltaArticulo.Size = new System.Drawing.Size(146, 24);
-            this.lblAltaArticulo.TabIndex = 20;
-            this.lblAltaArticulo.Text = "Agregar Arituclo";
+            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(76)))), ((int)(((byte)(92)))));
+            this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMinimizar.FlatAppearance.BorderSize = 0;
+            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimizar.Location = new System.Drawing.Point(442, 0);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(22, 41);
+            this.btnMinimizar.TabIndex = 18;
+            this.btnMinimizar.Text = "-";
+            this.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // lblAdvertencia
             // 
